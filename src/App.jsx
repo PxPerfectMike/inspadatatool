@@ -2,7 +2,7 @@
 import React from 'react';
 import ServicesSummary from './ServicesSummary';
 
-function App({ data }) {
+function App() {
 	const style = {
 		display: 'flex',
 		flexDirection: 'column',
@@ -12,7 +12,7 @@ function App({ data }) {
 
 	return (
 		<div style={style}>
-			<ServicesSummary data={data} />
+			<ServicesSummary />
 		</div>
 	);
 }
