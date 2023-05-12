@@ -24,6 +24,7 @@ const services = [
 
 const ServicesSummary = () => {
 	const [serviceData, setServiceData] = useState([]);
+	const [dateRange, setDateRange] = useState({ start: '', end: '' });
 
 	const onDrop = useCallback((acceptedFiles) => {
 		acceptedFiles.forEach((file) => {
@@ -33,6 +34,19 @@ const ServicesSummary = () => {
 				csv()
 					.fromString(reader.result)
 					.then((jsonObj) => {
+						const dates = jsonObj.map((obj) => new Date(obj['Sale Date']));
+						const minDate = new Date(Math.min.apply(null, dates));
+						const maxDate = new Date(Math.max.apply(null, dates));
+
+						setDateRange({
+							start: `${
+								minDate.getMonth() + 1
+							}/${minDate.getDate()}/${minDate.getFullYear()}`,
+							end: `${
+								maxDate.getMonth() + 1
+							}/${maxDate.getDate()}/${maxDate.getFullYear()}`,
+						});
+
 						const newServiceData = services.map((service) => {
 							const filteredData = jsonObj.filter(
 								(item) =>
@@ -106,6 +120,9 @@ const ServicesSummary = () => {
 				</div>
 			</Paper>
 			<TableContainer component={Paper} elevation={3}>
+				<Typography variant='h6' style={{ padding: '1em' }}>
+					Date Range: {dateRange.start} - {dateRange.end}
+				</Typography>
 				<Table>
 					<TableHead>
 						<TableRow>
