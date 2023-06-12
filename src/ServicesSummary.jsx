@@ -38,15 +38,6 @@ const ServicesSummary = () => {
 						const minDate = new Date(Math.min.apply(null, dates));
 						const maxDate = new Date(Math.max.apply(null, dates));
 
-						setDateRange({
-							start: `${
-								minDate.getMonth() + 1
-							}/${minDate.getDate()}/${minDate.getFullYear()}`,
-							end: `${
-								maxDate.getMonth() + 1
-							}/${maxDate.getDate()}/${maxDate.getFullYear()}`,
-						});
-
 						const newServiceData = services.map((service) => {
 							const filteredData = jsonObj.filter(
 								(item) =>
@@ -62,6 +53,15 @@ const ServicesSummary = () => {
 							const count = filteredData.length;
 
 							return { service, sum, count };
+						});
+
+						setDateRange({
+							start: `${
+								minDate.getMonth() + 1
+							}/${minDate.getDate()}/${minDate.getFullYear()}`,
+							end: `${
+								maxDate.getMonth() + 1
+							}/${maxDate.getDate()}/${maxDate.getFullYear()}`,
 						});
 
 						setServiceData(newServiceData);
