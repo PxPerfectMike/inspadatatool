@@ -86,6 +86,16 @@ const ServicesSummary = () => {
 				gap: 2,
 			}}
 		>
+			<Typography variant='h5'>Inspa "Sales - Services" Tool</Typography>
+			<Typography variant='p'>
+				<a
+					href='https://docs.google.com/document/d/1Q9L991-UWbabBCY3GmerdBkDEp08_t2hKbKgSFRQ8xY/edit?usp=sharing'
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					Instructions
+				</a>
+			</Typography>
 			<Paper
 				elevation={3}
 				{...getRootProps()}
